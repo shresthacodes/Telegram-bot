@@ -1,13 +1,14 @@
-# import telebot
-import telegram_bot
+
+import telebot
 import wikipedia
+
 from api_key import api_key
 
 
-bot = telegram_bot.Telebot(api_key)
+bot = telebot.Telebot(api_key)
 
 
-@bot.message_handle(commands=["start", "help"])
+@bot.message_handler(commands=["start", "help"])
 def send_welcome(message):
     bot.reply_to(message, "Ask me anything, I wikipedia it")
 
@@ -20,9 +21,9 @@ def send_reply(message):
     except Exception:
         pass
     finally:
-        bot.reply.to(message, reply)
+        bot.reply_to(message, reply)
 
 
 print("Loading...")
-bot.infinity.polling()
+bot.infinity_polling()
 print("Stopped")
